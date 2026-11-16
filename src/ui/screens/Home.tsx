@@ -4,6 +4,9 @@ import { useI18n } from '../../i18n';
 import { useSettings } from '../settingsContext';
 import { isoWeek, weekLabel } from '../../domain/dates';
 import { Header } from '../components/Layout';
+import { useInProgressAudit } from './audit/AuditScreens';
+import { findAuditForWeek } from '../../data/auditRepo';
+import { useLiveQuery } from 'dexie-react-hooks';
 
 function formatBytes(n: number): string {
   if (n < 1024 * 1024) return `${Math.round(n / 1024)} Ko`;
@@ -14,6 +17,8 @@ export function Home() {
   const { t, lang } = useI18n();
   const s = useSettings();
   const { isoYear, isoWeek: w } = isoWeek(new Date());
+  const current = useInProgressAudit();
+  const thisWeek = useLiveQuery(() => findAuditForWeek(new Date()), []);
   const [storage, setStorage] = useState<{ used?: number; persisted?: boolean }>({});
 
   useEffect(() => {
@@ -31,8 +36,9 @@ export function Home() {
       <section className="card hero">
         <div className="hero-week">{weekLabel(isoYear, w, prefix)}</div>
         <div className="muted">{new Date().toLocaleDateString(lang, { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })}</div>
-        <button type="button" className="btn btn-primary btn-big" disabled>▶ {t('nav.audit')}</button>
-        <div className="muted small">{t('common.comingSoon')}</div>
+        <Link to="/audit" className="btn btn-primary btn-big btn-link">
+          ▶ {current ? t('audit.resume') : thisWeek ? t('audit.view') : t('audit.start')}
+        </Link>
       </section>
       {(!s.siteName || !s.auditorName) && (
         <Link to="/settings/general" className="card notice">⚙️ {t('home.setupHint')}</Link>

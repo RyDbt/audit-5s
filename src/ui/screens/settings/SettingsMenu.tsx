@@ -9,6 +9,7 @@ export function SettingsMenu() {
     { to: 'workbenches', icon: '🛠️', label: t('settings.workbenches') },
     { to: 'categories', icon: '🏷️', label: t('settings.categories') },
     { to: 'severities', icon: '⚠️', label: t('settings.severities') },
+    { to: 'backup', icon: '💾', label: t('settings.backup') },
   ];
   return (
     <>
