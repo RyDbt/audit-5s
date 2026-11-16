@@ -11,6 +11,9 @@ import { GeneralSettings } from './ui/screens/settings/GeneralSettings';
 import { WorkbenchEdit, WorkbenchList } from './ui/screens/settings/Workbenches';
 import { Categories } from './ui/screens/settings/Categories';
 import { Severities } from './ui/screens/settings/Severities';
+import { Backup } from './ui/screens/settings/Backup';
+import { AuditEntry, AuditView } from './ui/screens/audit/AuditScreens';
+import { WorkbenchAuditScreen } from './ui/screens/audit/WorkbenchAuditScreen';
 
 export function App() {
   const [ready, setReady] = useState(false);
@@ -35,6 +38,9 @@ export function App() {
           <Routes>
             <Route element={<Layout />}>
               <Route index element={<Home />} />
+              <Route path="audit" element={<AuditEntry />} />
+              <Route path="audit/:auditId" element={<AuditView />} />
+              <Route path="audit/:auditId/wb/:wbId" element={<WorkbenchAuditScreen />} />
               <Route path="actions" element={<Placeholder titleKey="nav.actions" />} />
               <Route path="report" element={<Placeholder titleKey="nav.report" />} />
               <Route path="trends" element={<Placeholder titleKey="nav.trends" />} />
@@ -44,6 +50,7 @@ export function App() {
               <Route path="settings/workbenches/:id" element={<WorkbenchEdit />} />
               <Route path="settings/categories" element={<Categories />} />
               <Route path="settings/severities" element={<Severities />} />
+              <Route path="settings/backup" element={<Backup />} />
               <Route path="*" element={<Home />} />
             </Route>
           </Routes>

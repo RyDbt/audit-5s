@@ -14,7 +14,7 @@ Application d'audit 5S hebdomadaire pour postes d'assemblage manuel, conçue pou
 | Phase | Contenu | État |
 |---|---|---|
 | 0 | Socle, mode hors ligne, installation, Réglages | ✅ |
-| 1 | Audit (constats, photos, checklist, score) + sauvegarde | ⏳ |
+| 1 | Audit (constats, photos, checklist, score) + sauvegarde | ✅ |
 | 2 | Suivi des actions, récurrences, données de démonstration | ⏳ |
 | 3 | Rapport PDF (EN / DE) + version une page | ⏳ |
 | 4 | Tableau de bord de tendance + export Excel / CSV | ⏳ |
@@ -37,9 +37,27 @@ Les mises à jour s'installent automatiquement à la prochaine ouverture avec du
 
 Valeurs par défaut : 12 postes (« Line 1 » à « Line 12 »), 14 catégories, 4 gravités (mineur, qualité, ESD, sécurité), 8 questions couvrant les 5 S.
 
-## Sauvegarde
+## Faire l'audit
 
-Disponible en phase 1 (export / import d'un fichier `.zip`).
+1. Onglet **Audit** → **Démarrer l'audit** : la semaine ISO et la date sont automatiques. Un seul audit par semaine ; s'il existe déjà, il est repris.
+2. Choisir un établi. La photo standard de référence s'affiche en haut (appui = plein écran).
+3. **📷 + Constat** ouvre directement l'appareil photo. Ensuite : autres photos si besoin, catégorie (la gravité proposée se remplit seule), commentaire facultatif (il sert de légende dans le rapport), **Enregistrer**. Le bouton **✎** crée un constat sans photo.
+   - **Écart** : compte dans le score, le Pareto et les récurrences.
+   - **Amélioration** : piste d'amélioration (section à part dans le rapport), crée aussi une action.
+4. Répondre à la checklist (Oui / Non). **Le reste = Oui** complète d'un coup.
+5. **Terminer → établi suivant**, ou **Conforme, rien à signaler** (100 %, possible seulement sans écart).
+6. Quand tout est fait : **Clôturer l'audit**. Un audit clôturé peut être rouvert.
+
+Chaque constat crée une action (responsable et échéance par défaut, modifiables en phase 2). Le temps d'audit est mesuré du démarrage à la clôture ; le temps par établi est affiché sur sa fiche.
+
+## Sauvegarde et restauration
+
+**Réglages → Sauvegarde**.
+
+- **Exporter une sauvegarde** crée un fichier `.zip` avec toutes les données et toutes les photos, puis ouvre le menu de partage Android (e-mail, OneDrive, Teams, Fichiers…). Faites-le après chaque audit.
+- **Restaurer une sauvegarde** remplace **toutes** les données du téléphone par celles du fichier (changement de téléphone, retour en arrière). Une confirmation indique la date et le contenu de la sauvegarde.
+
+Le fichier contient les photos d'atelier : rangez-le uniquement dans un espace de stockage approuvé par l'entreprise.
 
 ## Développement
 

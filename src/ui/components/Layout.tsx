@@ -6,9 +6,9 @@ export function Layout() {
   const { t } = useI18n();
   const items = [
     { to: '/', icon: '🏠', label: t('nav.home'), end: true },
+    { to: '/audit', icon: '📋', label: t('nav.audit') },
     { to: '/actions', icon: '✅', label: t('nav.actions') },
     { to: '/report', icon: '📄', label: t('nav.report') },
-    { to: '/trends', icon: '📈', label: t('nav.trends') },
     { to: '/settings', icon: '⚙️', label: t('nav.settings') },
   ];
   return (
